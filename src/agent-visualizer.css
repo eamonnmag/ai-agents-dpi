@@ -1,0 +1,365 @@
+@import url('https://cdn.jsdelivr.net/npm/tufte-css@1.8.0/tufte.min.css');
+
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+    --color-bg:            #fffff8;
+    --color-text:          #111111;
+    --color-muted:         #555555;
+    --color-faint:         #999999;
+    --color-border:        #ddddcc;
+    --color-border-light:  #eeeeee;
+
+    --color-good:          #4a7c59;
+    --color-warn:          #c8860a;
+    --color-bad:           #b03a2e;
+    --color-accent:        #a00000;
+    --color-line-primary:  #333333;
+    --color-line-best:     #4a7c59;
+    --color-line-worst:    #c8860a;
+    --color-band-fill:     rgba(100, 100, 80, 0.07);
+
+    --font-serif:  et-book, Palatino, 'Palatino Linotype', serif;
+    --font-sans:   'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+    --font-mono:   'Lucida Console', Monaco, monospace;
+
+    --text-xs:   0.68rem;
+    --text-sm:   0.8rem;
+    --text-base: 1rem;
+    --text-lg:   1.2rem;
+    --text-xl:   1.5rem;
+    --text-2xl:  2rem;
+
+    --space-xs:  4px;
+    --space-sm:  8px;
+    --space-md:  16px;
+    --space-lg:  24px;
+    --space-xl:  40px;
+    --space-2xl: 64px;
+}
+
+/* ─── Page shell ─────────────────────────────────────────────── */
+body { background: var(--color-bg); }
+
+.page-style {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-serif);
+}
+
+/* ─── Section labels ─────────────────────────────────────────── */
+.section-label {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-sm);
+    display: block;
+}
+
+.viz-section-title {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--color-border-light);
+    display: block;
+}
+
+/* ─── Sidenotes ─────────────────────────────────────────────── */
+.sidenote,
+.marginnote {
+    font-family: var(--font-sans) !important;
+    font-size: var(--text-xs) !important;
+    line-height: 1.6 !important;
+    color: var(--color-muted) !important;
+}
+
+.sidenote strong,
+.marginnote strong {
+    color: var(--color-text);
+    font-style: normal;
+}
+
+.sidenote-number {
+    color: var(--color-accent) !important;
+}
+
+.sidenote.callout,
+.marginnote.callout {
+    border-left: 2px solid var(--color-accent);
+    padding-left: var(--space-sm);
+}
+
+.sidenote.data,
+.marginnote.data {
+    border-left: 2px solid var(--color-good);
+    padding-left: var(--space-sm);
+}
+
+.sidenote.warn,
+.marginnote.warn {
+    border-left: 2px solid var(--color-bad);
+    padding-left: var(--space-sm);
+}
+
+/* ─── Fullwidth blocks — span body + margin column ──────────── */
+/* Wraps table and chart so they use the full page width          */
+/* Tufte CSS .fullwidth already does most of the work             */
+.fullwidth {
+    clear: both;
+    width: 100%;
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    overflow-x: hidden;
+}
+
+/* ─── Controls ──────────────────────────────────────────────── */
+.controls-panel {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-lg) 0;
+    margin-bottom: var(--space-xl);
+    display: flex;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.control-group label {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: var(--space-sm);
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.control-row input[type=range] {
+    width: 160px;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+}
+
+.control-value {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    min-width: 54px;
+    font-family: var(--font-mono);
+}
+
+.control-note {
+    font-size: var(--text-xs);
+    color: var(--color-faint);
+    margin-top: var(--space-xs);
+    font-style: italic;
+}
+
+/* ─── Agent chain ─────────────────────────────────────────────  */
+.chain-wrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: var(--space-md) 0;
+}
+
+.chain-node {
+    border: 1px solid var(--color-border);
+    border-top-width: 2px;
+    border-radius: 2px;
+    padding: var(--space-sm) var(--space-md);
+    text-align: center;
+    min-width: 68px;
+    background: var(--color-bg);
+}
+
+.chain-node-label {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    margin-bottom: 2px;
+}
+
+.chain-node-value {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    font-family: var(--font-mono);
+}
+
+.chain-node-lost {
+    font-size: var(--text-xs);
+    color: var(--color-faint);
+    margin-top: 2px;
+}
+
+.chain-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 4px;
+    color: var(--color-faint);
+}
+
+.chain-arrow-sym  { font-size: var(--text-base); }
+.chain-arrow-mult { font-size: var(--text-xs); font-family: var(--font-mono); white-space: nowrap; }
+
+.chain-result {
+    padding: var(--space-sm) var(--space-md);
+    border-left: 2px solid var(--color-accent);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    margin-top: var(--space-md);
+}
+
+.chain-result strong { color: var(--color-text); }
+
+/* ─── Chart legend ────────────────────────────────────────────── */
+.chart-legend {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-md);
+    font-size: var(--text-xs);
+    font-family: var(--font-sans);
+    color: var(--color-muted);
+}
+
+.legend-item { display: flex; align-items: center; gap: var(--space-xs); }
+.legend-swatch { width: 20px; height: 2px; display: inline-block; border-radius: 1px; }
+
+/* ─── Benchmark table ─────────────────────────────────────────── */
+.benchmark-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-lg);
+    table-layout: fixed;
+}
+
+/* Column widths — must sum to 100% */
+.benchmark-table .col-model  { width: 30%; }
+.benchmark-table .col-acc    { width: 9%; }
+.benchmark-table .col-bar    { width: 30%; }
+.benchmark-table .col-hall   { width: 12%; }
+.benchmark-table .col-source { width: 19%; }
+
+.benchmark-table th {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-xs) var(--space-sm);
+    text-align: left;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.benchmark-table td {
+    padding: var(--space-xs) var(--space-sm);
+    border-bottom: 1px solid var(--color-border-light);
+    color: var(--color-text);
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.benchmark-table td.label-cell {
+    font-style: italic;
+    font-size: var(--text-sm);
+}
+
+.benchmark-table td.mono-cell {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+}
+
+.benchmark-table td.source-cell {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-faint);
+}
+
+.bar-track {
+    height: 5px;
+    background: var(--color-border-light);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.bar-fill { height: 100%; border-radius: 2px; }
+
+/* ─── Stat cards ──────────────────────────────────────────────── */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin: var(--space-md) 0 var(--space-xl);
+}
+
+.stat-card {
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.stat-card-label {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-xs);
+}
+
+.stat-card-value {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 2px;
+    font-family: var(--font-mono);
+}
+
+.stat-card-sub {
+    font-size: var(--text-xs);
+    color: var(--color-faint);
+    font-style: italic;
+}
+
+/* ─── Tooltip ─────────────────────────────────────────────────── */
+.custom-tooltip {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    padding: var(--space-sm) var(--space-md);
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.tooltip-label { font-weight: 600; margin-bottom: 4px; color: var(--color-accent); }
+.tooltip-row   { color: var(--color-muted); line-height: 1.8; }
+.tooltip-row span { color: var(--color-text); font-family: var(--font-mono); font-weight: 600; }
+.tooltip-divider { border-top: 1px solid var(--color-border); margin: 4px 0; }
+
+/* ─── Footer note ─────────────────────────────────────────────── */
+.info-box {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-md);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    line-height: 1.7;
+    font-style: italic;
+    margin-top: var(--space-xl);
+}
+
+.info-box strong { color: var(--color-text); font-style: normal; }
